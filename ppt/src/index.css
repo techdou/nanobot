@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #faf8f5;
+    --bg-secondary: #f3efe8;
+    --bg-tertiary: #ebe5db;
+    --text-primary: #1c1917;
+    --text-secondary: #57534e;
+    --text-tertiary: #78716c;
+    --accent-warm: #c25e28;
+    --accent-rose: #b4536e;
+    --accent-sage: #5c6b55;
+    --accent-ochre: #b8860b;
+    --border-light: #e7e5e4;
+    --border-medium: #d6d3d1;
+    --code-bg: #292524;
+    --code-text: #e7e5e4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  code, pre, .mono {
+    font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+  }
+}
+
+@layer components {
+  .slide-container {
+    @apply w-full h-screen flex flex-col justify-center items-center px-16 py-12 relative overflow-hidden;
+    background: var(--bg-primary);
+  }
+
+  .slide-number {
+    @apply absolute bottom-6 right-8 text-sm font-medium tracking-widest uppercase;
+    color: var(--text-tertiary);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .slide-title {
+    @apply text-5xl md:text-6xl font-black leading-tight mb-8;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--text-primary);
+  }
+
+  .slide-subtitle {
+    @apply text-2xl md:text-3xl font-semibold mb-6;
+    font-family: 'Noto Serif SC', serif;
+    color: var(--text-secondary);
+  }
+
+  .slide-body {
+    @apply text-xl md:text-2xl leading-relaxed max-w-5xl;
+    color: var(--text-secondary);
+  }
+
+  .accent-warm { color: var(--accent-warm); }
+  .accent-rose { color: var(--accent-rose); }
+  .accent-sage { color: var(--accent-sage); }
+  .accent-ochre { color: var(--accent-ochre); }
+  .bg-accent-warm { background-color: var(--accent-warm); }
+  .bg-accent-rose { background-color: var(--accent-rose); }
+  .bg-accent-sage { background-color: var(--accent-sage); }
+  .bg-accent-ochre { background-color: var(--accent-ochre); }
+
+  .card {
+    @apply rounded-2xl p-8 border transition-all duration-300;
+    background: var(--bg-secondary);
+    border-color: var(--border-light);
+  }
+
+  .card:hover {
+    border-color: var(--border-medium);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  }
+
+  .tag {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium tracking-wide;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+  }
+
+  .divider {
+    @apply w-24 h-1 rounded-full mb-8;
+    background: linear-gradient(90deg, var(--accent-warm), var(--accent-rose));
+  }
+
+  .code-block {
+    @apply rounded-xl p-6 text-sm leading-relaxed overflow-x-auto;
+    background: var(--code-bg);
+    color: var(--code-text);
+  }
+
+  .arrow-connector {
+    @apply flex items-center justify-center;
+  }
+
+  .arrow-connector::after {
+    content: '→';
+    @apply text-3xl font-light mx-4;
+    color: var(--text-tertiary);
+  }
+
+  .grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
